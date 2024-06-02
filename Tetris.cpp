@@ -17,6 +17,101 @@
 const int normal_speed[6] = { 500,450,390,330,220,110 };
 const int quick_speed = 90;
 
+void Tetris::openmusic()
+{
+
+	//加载游戏音乐，歌曲名使用英文
+	mciSendString("open res/To_the_love'end.mp3 alias m1", 0, 0, 0);
+	mciSendString("open res/Faded.mp3 alias m2", 0, 0, 0);
+	mciSendString("open res/Merry_Christmas_Mr. Lawrence.mp3 alias m3", 0, 0, 0);
+	mciSendString("open res/Minecraft.mp3 alias m4", 0, 0, 0);
+	mciSendString("open res/Seasonse.mp3 alias m5", 0, 0, 0);
+	mciSendString("open res/I_Love.mp3 alias m6", 0, 0, 0);
+	mciSendString("open res/To_the_love'end.mp3 alias m7", 0, 0, 0);
+	mciSendString("open res/whale.mp3 alias m8", 0, 0, 0);
+	mciSendString("open res/Confession.mp3 alias m9", 0, 0, 0);
+	mciSendString("open res/Sea_flowers.mp3 alias m10", 0, 0, 0);
+	mciSendString("open res/See_off.mp3 alias m11", 0, 0, 0);
+	mciSendString("open res/at_dusk.mp3 alias m12", 0, 0, 0);
+	mciSendString("open res/Summer.mp3 alias m13", 0, 0, 0);
+	mciSendString("open res/Snow.mp3 alias m14", 0, 0, 0);
+	mciSendString("open res/porcelain.mp3 alias m15", 0, 0, 0);
+	mciSendString("open res/if_forgotten.mp3 alias m16", 0, 0, 0);
+	mciSendString("open res/lose_time.mp3 alias m17", 0, 0, 0);
+	mciSendString("open res/Only.mp3 alias m18", 0, 0, 0);
+	mciSendString("open res/frost.mp3 alias m19", 0, 0, 0);
+	mciSendString("open res/paper_plane.mp3 alias m20", 0, 0, 0);
+	mciSendString("open res/road_with_flower.mp3 alias m21", 0, 0, 0);
+	mciSendString("open res/cloud_loop.mp3 alias m22", 0, 0, 0);
+	mciSendString("open res/divorce.mp3 alias m23", 0, 0, 0);
+	mciSendString("open res/looking_for_you.mp3 alias m24", 0, 0, 0);
+	mciSendString("open res/See_You_Again.mp3 alias m25", 0, 0, 0);
+}
+
+void Tetris::closemusic()
+{
+	mciSendString("close m1 repeat", 0, 0, 0);
+	mciSendString("close m2 repeat", 0, 0, 0);
+	mciSendString("close m3 repeat", 0, 0, 0);
+	mciSendString("close m4 repeat", 0, 0, 0);
+	mciSendString("close m5 repeat", 0, 0, 0);
+	mciSendString("close m6  repeat", 0, 0, 0);
+	mciSendString("close m7 repeat", 0, 0, 0);
+	mciSendString("close m8 repeat", 0, 0, 0);
+	mciSendString("close m9 repeat", 0, 0, 0);
+	mciSendString("close m10 repeat", 0, 0, 0);
+	mciSendString("close m11 repeat", 0, 0, 0);
+	mciSendString("close m12 repeat", 0, 0, 0);
+	mciSendString("close m13 repeat", 0, 0, 0);
+	mciSendString("close m14 repeat", 0, 0, 0);
+	mciSendString("close m15 repeat", 0, 0, 0);
+	mciSendString("close m16 repeat", 0, 0, 0);
+	mciSendString("close m17 repeat", 0, 0, 0);
+	mciSendString("close m18 repeat", 0, 0, 0);
+	mciSendString("close m19 repeat", 0, 0, 0);
+	mciSendString("close m20 repeat", 0, 0, 0);
+	mciSendString("close m21 repeat", 0, 0, 0);
+	mciSendString("close m22 repeat", 0, 0, 0);
+	mciSendString("close m23 repeat", 0, 0, 0);
+	mciSendString("close m24 repeat", 0, 0, 0);
+	mciSendString("close m25 repeat", 0, 0, 0);
+}
+
+void Tetris::changemusic()
+{
+}
+
+void Tetris::playmusic(int m)
+{
+	
+	if (m == 0)mciSendString("play m1 repeat", 0, 0, 0);
+	if (m == 1)mciSendString("play m2 repeat", 0, 0, 0);
+	if (m == 2)mciSendString("play m3 repeat", 0, 0, 0);
+	if (m == 3)mciSendString("play m4 repeat", 0, 0, 0);
+	if (m == 4)mciSendString("play m5 repeat", 0, 0, 0);
+	if (m == 5)mciSendString("play m6  repeat", 0, 0, 0);
+	if (m == 6)mciSendString("play m7 repeat", 0, 0, 0);
+	if (m == 7)mciSendString("play m8 repeat", 0, 0, 0);
+	if (m == 8)mciSendString("play m9 repeat", 0, 0, 0);
+	if (m == 9)mciSendString("play m10 repeat",0,0,0);
+	if (m == 10)mciSendString("play m11 repeat",0,0,0);
+	if (m == 11)mciSendString("play m12 repeat",0,0,0);
+	if (m == 12)mciSendString("play m13 repeat",0,0,0);
+	if (m == 13)mciSendString("play m14 repeat",0,0,0);
+	if (m == 14)mciSendString("play m15 repeat",0,0,0);
+	if (m == 15)mciSendString("play m16 repeat",0,0,0);
+	if (m == 16)mciSendString("play m17 repeat",0,0,0); 
+	if (m == 17)mciSendString("play m18 repeat",0,0,0);
+	if (m == 18)mciSendString("play m19 repeat",0,0,0);
+	if (m == 19)mciSendString("play m20 repeat",0,0,0);
+	if (m == 20)mciSendString("play m21 repeat",0,0,0); 
+	if (m == 21)mciSendString("play m22 repeat",0,0,0);
+	if (m == 22)mciSendString("play m23 repeat",0,0,0);
+	if (m == 23)mciSendString("play m24 repeat",0,0,0);
+	if (m == 24)mciSendString("play m25 repeat", 0, 0, 0);
+
+}
+
 void Tetris::keyEven()
 {
 	unsigned char userkey;
@@ -254,6 +349,10 @@ Tetris::Tetris(int rows, int columns, int left, int top, int blockSize)
 		map.push_back(map_row);
 	}
 
+	//初始设置为播放第一首
+	music = 23;
+	openmusic();
+	
 
 }
 
@@ -339,6 +438,9 @@ void Tetris::init()
 {
 	//播放游戏音乐
 	//mciSendString("play pure1.mp3",0,0,0);
+	playmusic(music);
+
+
 
 	delay = normal_speed[0];
 
@@ -413,7 +515,7 @@ void Tetris::play()
 			timer = 0;
 
 
-			drop();	
+			drop();
 			//渲染游戏画面
 			update = true;
 
@@ -444,14 +546,14 @@ void Tetris::play()
 		}
 
 		FlushBatchDraw();
-	
+
 	}
 	EndBatchDraw();
 
-	}
+};
 
 
-}
+
 
 void Tetris::moveLeftRight(int offset)
 {

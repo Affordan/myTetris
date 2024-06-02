@@ -8,6 +8,7 @@ using namespace std;
 class Tetris
 {
 private:
+	int music;   //表示播放哪一首音乐
 	int delay;	//关卡不同刷新频率不同
 	bool update;	//判断是否更新
 
@@ -33,6 +34,11 @@ private:
 	Block* nextBlock;	//预告方块
 	
 	Block copyBlock;	//在当前方块掉落过程中用来备份上一个合法位置的方块
+
+	void openmusic();
+	void closemusic();
+	void changemusic();
+	void playmusic(int m);	//播放音乐
 
 	bool gameOver;	//游戏是否结束
 
