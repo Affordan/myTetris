@@ -394,6 +394,7 @@ void Tetris::play()
 	//用计时器设置刷新频率，从而使得画面流畅
 	int timer = 0;
 
+
 	//双缓冲机制
 	BeginBatchDraw();
 
@@ -405,10 +406,13 @@ void Tetris::play()
 		timer += getDelay();
 
 		//屏幕刷新率30Hz,合理安排渲染的次数
+
 		//需要修改为60Hz,更加适合人眼的辨识度
 		if (timer > delay)
 		{
 			timer = 0;
+
+
 			drop();	
 			//渲染游戏画面
 			update = true;
@@ -438,12 +442,15 @@ void Tetris::play()
 			init();				//重新开始下一局
 
 		}
-	
+
 		FlushBatchDraw();
 	
 	}
 	EndBatchDraw();
-	
+
+	}
+
+
 }
 
 void Tetris::moveLeftRight(int offset)
