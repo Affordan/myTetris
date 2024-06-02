@@ -14,6 +14,8 @@
 #include "Block.h"
 #include <mciapi.h>
 
+//终于回来了
+
 int main()
 {
 	//行数，列数，距离左侧和顶部距离(根据背景图片而定),和方块大小
