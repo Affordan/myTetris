@@ -3,7 +3,8 @@
 #include <vector>
 #include "Block.h"
 #include <mciapi.h>
-using namespace std;
+
+
 
 class Tetris
 {
@@ -36,11 +37,11 @@ private:
 	Block copyBlock;	//在当前方块掉落过程中用来备份上一个合法位置的方块
 
 	void openmusic();
-	void closemusic();
-	void changemusic();
+	void closemusic(int m);
+	void changemusic(int m); //播放一首新的音乐
 	void playmusic(int m);	//播放音乐
 
-	bool gameOver;	//游戏是否结束
+	bool gameOver;	//判断游戏是否结束
 
 private:
 	//类内部用的接受接口，放在隐私权限中

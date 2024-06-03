@@ -11,6 +11,12 @@
 #include <mciapi.h>
 #pragma commemt(lib,"winmm.lib")
 #define RECORD_FILE "score.txt"
+//使用mt19937生成随机数种子以确保播放音乐的随机性
+#include <random>
+using namespace std;
+mt19937 myseed(0);
+uniform_int_distribution<int> myrand(15, 150);
+
 
 //正常速度500ms，快速50ms
 //const int normal_speed = 500;
@@ -48,37 +54,40 @@ void Tetris::openmusic()
 	mciSendString("open res/See_You_Again.mp3 alias m25", 0, 0, 0);
 }
 
-void Tetris::closemusic()
+void Tetris::closemusic(int m)
 {
-	mciSendString("close m1 repeat", 0, 0, 0);
-	mciSendString("close m2 repeat", 0, 0, 0);
-	mciSendString("close m3 repeat", 0, 0, 0);
-	mciSendString("close m4 repeat", 0, 0, 0);
-	mciSendString("close m5 repeat", 0, 0, 0);
-	mciSendString("close m6  repeat", 0, 0, 0);
-	mciSendString("close m7 repeat", 0, 0, 0);
-	mciSendString("close m8 repeat", 0, 0, 0);
-	mciSendString("close m9 repeat", 0, 0, 0);
-	mciSendString("close m10 repeat", 0, 0, 0);
-	mciSendString("close m11 repeat", 0, 0, 0);
-	mciSendString("close m12 repeat", 0, 0, 0);
-	mciSendString("close m13 repeat", 0, 0, 0);
-	mciSendString("close m14 repeat", 0, 0, 0);
-	mciSendString("close m15 repeat", 0, 0, 0);
-	mciSendString("close m16 repeat", 0, 0, 0);
-	mciSendString("close m17 repeat", 0, 0, 0);
-	mciSendString("close m18 repeat", 0, 0, 0);
-	mciSendString("close m19 repeat", 0, 0, 0);
-	mciSendString("close m20 repeat", 0, 0, 0);
-	mciSendString("close m21 repeat", 0, 0, 0);
-	mciSendString("close m22 repeat", 0, 0, 0);
-	mciSendString("close m23 repeat", 0, 0, 0);
-	mciSendString("close m24 repeat", 0, 0, 0);
-	mciSendString("close m25 repeat", 0, 0, 0);
+	if (m == 0)mciSendString("close m1 ", 0, 0, 0);
+	if (m == 1)mciSendString("close m2 ", 0, 0, 0);
+	if (m == 2)mciSendString("close m3 ", 0, 0, 0);
+	if (m == 3)mciSendString("close m4 ", 0, 0, 0);
+	if (m == 4)mciSendString("close m5 ", 0, 0, 0);
+	if (m == 5)mciSendString("close m6 ", 0, 0, 0);
+	if (m == 6)mciSendString("close m7 ", 0, 0, 0);
+	if (m == 7)mciSendString("close m8 ", 0, 0, 0);
+	if (m == 8)mciSendString("close m9 ", 0, 0, 0);
+	if (m == 9)mciSendString("close m10", 0, 0, 0);
+	if (m == 10)mciSendString("close m11", 0, 0, 0);
+	if (m == 11)mciSendString("close m12", 0, 0, 0);
+	if (m == 12)mciSendString("close m13", 0, 0, 0);
+	if (m == 13)mciSendString("close m14", 0, 0, 0);
+	if (m == 14)mciSendString("close m15", 0, 0, 0);
+	if (m == 15)mciSendString("close m16", 0, 0, 0);
+	if (m == 16)mciSendString("close m17", 0, 0, 0);
+	if (m == 17)mciSendString("close m18", 0, 0, 0);
+	if (m == 18)mciSendString("close m19", 0, 0, 0);
+	if (m == 19)mciSendString("close m20", 0, 0, 0);
+	if (m == 20)mciSendString("close m21", 0, 0, 0);
+	if (m == 21)mciSendString("close m22", 0, 0, 0);
+	if (m == 22)mciSendString("close m23", 0, 0, 0);
+	if (m == 23)mciSendString("close m24", 0, 0, 0);
+	if (m == 24)mciSendString("close m25", 0, 0, 0);
 }
 
-void Tetris::changemusic()
+
+void Tetris::changemusic(int m)
 {
+	openmusic();
+	playmusic(m);
 }
 
 void Tetris::playmusic(int m)
@@ -173,6 +182,14 @@ void Tetris::keyEven()
 		case 'q':
 			delay = normal_speed[0];
 			break;
+		case 'E':
+		case 'e':
+		{
+			closemusic(music);
+			music =( myrand(myseed)%25);
+			changemusic(music);
+			break;
+		}
 		default:
 			break;
 		}
@@ -334,7 +351,7 @@ Tetris::Tetris(int rows, int columns, int left, int top, int blockSize)
 
 	//这个主要是考虑到有外界的要求导致游戏的展示大小改变从而方便调整用的
 	//实际上对于一个固定设计尺寸的游戏例如手机端或者Switch上面固定大小的游戏
-	// 而言，并不需要这些
+	//而言，并不需要这些
 	this->row_num = rows;
 	this->column_num = columns;
 	this->leftMargin = left;
@@ -350,7 +367,7 @@ Tetris::Tetris(int rows, int columns, int left, int top, int blockSize)
 	}
 
 	//初始设置为播放第一首
-	music = 23;
+	music = 0;
 	openmusic();
 	
 
@@ -415,10 +432,12 @@ void Tetris::saveScore()
 	}
 }
 
-//绘制有些结束画面
+//绘制游戏结束画面
 void Tetris::displayOver()
 {
 	//mciSendString("stop .pure1.mp3", 0, 0, 0);
+	//关闭音乐
+	closemusic(music);
 
 	//胜利结束还是失败结束
 	if (level <= 7)
